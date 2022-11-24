@@ -1,18 +1,15 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
-    "moduleResolution": "node",
+    "module": "commonjs",
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "outDir": "lib",
     "sourceMap": true,
     "strict": true,
-    "target": "es6",
+    "target": "es5",
     "importHelpers": true,
     "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
-    "lib": ["es2021", "dom", "dom.iterable"],
-    "allowJs": true
+    "allowSyntheticDefaultImports": true
   },
   "compileOnSave": true,
   "include": [

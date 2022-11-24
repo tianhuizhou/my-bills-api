@@ -1,6 +1,6 @@
+DROP TABLE IF EXISTS Users_Tokens;
 DROP TABLE IF EXISTS UserAccount;
 DROP TABLE IF EXISTS AccessToken;
-DROP TABLE IF EXISTS Users_Tokens;
 
 CREATE TABLE IF NOT EXISTS UserAccount (
    id serial PRIMARY KEY,
