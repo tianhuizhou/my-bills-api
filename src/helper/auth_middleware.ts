@@ -15,7 +15,7 @@ const tokenValidation = (req: AuthRequest, res: Response, next: () => void) => {
     return
   }
 
-  // Ignore cookie for now
+  // Ignore cookie for now, using cookie for storing JWT might be more secure
   let user_token = null
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer ')) {
     console.log('Found "Authorization" header')

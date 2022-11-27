@@ -7,7 +7,7 @@
 import { Request, Response } from 'express'
 import { AuthRequest } from '../helper/types'
 
-const UserService = require('../service/user_service')
+const UserService = require('../service/user_account_service')
 
 // eslint-disable-next-line new-cap
 const user_account_public_router = require('express').Router()

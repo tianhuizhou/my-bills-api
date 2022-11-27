@@ -6,7 +6,7 @@ const JWT = require('jsonwebtoken')
 const TokenStore = JwtStore.getInstance()
 const _pick = require('lodash/pick')
 
-const UserRepository = require('../repository/user_repository')
+const UserRepository = require('../repository/user_account_repository')
 
 class UserService {
   static async getUserById(id: number) {

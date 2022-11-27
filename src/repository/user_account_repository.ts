@@ -1,3 +1,4 @@
+// @ts-ignore
 const psql = require('../config/db')
 
 class UserRepository {
@@ -16,6 +17,7 @@ class UserRepository {
   }
 
   static create({ username, password }: { username: string; password: string }) {
+    /* TODO: password should be encrypted */
     return psql`
         insert into UserAccount (username, password)
         values (${username}, ${password})
@@ -39,7 +41,7 @@ class UserRepository {
 
   static authenticate({ username, password }: { username: string; password: string }) {
     return psql`
-      select * from UserAccount
+      select id, username from UserAccount
       where username = ${username} and password = ${password}
     `
   }

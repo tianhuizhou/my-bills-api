@@ -23,7 +23,7 @@ class NotFoundRestException extends RestfulException {
 
 class BadRequestRestException extends RestfulException {
   constructor(msg = '') {
-    super(`${msg} Incorrect Request Body`, 400)
+    super(`${msg || 'Invalid Request Body'}`, 400)
   }
 }
 
