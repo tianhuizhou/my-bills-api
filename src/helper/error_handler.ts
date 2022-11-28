@@ -10,7 +10,7 @@ interface ErrorException {
 
 const errorHandler = (error: ErrorException, req: Request, res: Response, _: NextFunction) => {
   console.error(error)
-  res.status(500).json({ error: error.msg, error_code: error.status })
+  res.status(error.status || 500).json({ error: error.msg, error_code: error.status })
 }
 
 module.exports = errorHandler

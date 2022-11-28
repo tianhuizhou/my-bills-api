@@ -47,11 +47,11 @@ class UserService {
     }
   }
 
-  static async logout(user: User, { username }: { username: string }) {
-    if (user.username !== username) {
-      throw new BadRequestRestException('Invalid action, you are only allowed to logout your own account')
+  static async logout(user: User) {
+    if (!user.username || !TokenStore.getToken(user.username)) {
+      throw new BadRequestRestException('Invalid action, please try again.')
     }
-    TokenStore.deleteToken = username
+    TokenStore.deleteToken = user.username
   }
 
   static async createUserAccount({ username, password }: { username: string; password: string }) {

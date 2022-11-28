@@ -10,10 +10,6 @@
 import { BadRequestRestException, NotFoundRestException } from '../helper/error_exceptions'
 import { CountryCode, LinkTokenCreateRequest } from 'plaid/api'
 
-// const PLAID_CLIENT_ID = process.env.PLAID_CLIENT_ID
-// const PLAID_SECRET = process.env.PLAID_SECRET
-// const PLAID_ENV = process.env.PLAID_ENV || 'sandbox'
-
 const PLAID_PRODUCTS = (process.env.PLAID_PRODUCTS || Products.Transactions).split(',')
 const PLAID_COUNTRY_CODES: Array<CountryCode> = (process.env.PLAID_COUNTRY_CODES || 'US').split(
   ',',
