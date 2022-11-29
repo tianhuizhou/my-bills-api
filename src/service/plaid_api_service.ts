@@ -41,7 +41,8 @@ class PlaidApiService {
     if (PLAID_ANDROID_PACKAGE_NAME !== '') {
       configs.android_package_name = PLAID_ANDROID_PACKAGE_NAME
     }
-    return await PlaidClient.linkTokenCreate(configs)
+    const resp = await PlaidClient.linkTokenCreate(configs)
+    return resp.data
   }
 
   //  Exchange token flow - exchange a Link public_token for access token

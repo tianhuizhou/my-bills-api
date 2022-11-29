@@ -7,7 +7,8 @@ const PlaidService = require('../service/plaid_api_service')
 const plaid_api_router = require('express').Router()
 
 plaid_api_router.route('/link_token').post(async (req: AuthRequest, res: Response) => {
-  const link_token = await PlaidService.createLinkToken(req.body)
+  const link_token = await PlaidService.createLinkToken(req.user.username)
+  console.log(link_token)
   res.status(201).json(link_token)
 })
 

@@ -20,10 +20,12 @@ const auth_middleware = require('./helper/auth_middleware')
 const user_account_public_router = require('./route/user_account').user_account_public_router
 const user_account_protected_router = require('./route/user_account').user_account_protected_router
 const plaid_api_router = require('./route/plaid_api')
+const bank_credential_router = require('./route/bank_credential')
 
 app.use('/api', user_account_public_router)
 app.use('/api', auth_middleware, user_account_protected_router)
 app.use('/api/plaid', auth_middleware, plaid_api_router)
+app.use('/api/bank_credential', auth_middleware, bank_credential_router)
 
 // Error handler middleware
 const error_handler = require('./helper/error_handler')

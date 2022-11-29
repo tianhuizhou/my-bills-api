@@ -1,6 +1,9 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const psql = require('../config/db')
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 class BankCredentialRepository {
   static find_by_id(id: number) {
     return psql`

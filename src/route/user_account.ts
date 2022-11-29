@@ -28,8 +28,15 @@ user_account_public_router.route('/login').post(async (req: Request, res: Respon
 
 // Logout
 user_account_protected_router.route('/logout').post(async (req: AuthRequest, res: Response) => {
-  await UserService.logout(req.user, req.body)
+  await UserService.logout(req.user)
   res.status(201).json({ 'msg': 'User logged out successfully' })
+})
+
+// JWT validation
+user_account_protected_router.route('/token_validation').post(async (req: AuthRequest, res: Response) => {
+  // since Auth-middleware will validate the token in the header,
+  // just simply return 201
+  res.status(201).json({ 'msg': 'Token is valid' })
 })
 
 // Update
