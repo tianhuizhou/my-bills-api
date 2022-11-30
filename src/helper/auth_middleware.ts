@@ -30,12 +30,12 @@ const tokenValidation = (req: AuthRequest, res: Response, next: () => void) => {
   JWT.verify(
     user_token,
     process.env.JWT_SECRET,
-    (err: { name: string; message: string; expiredAt: number }, { data: user }: { data: User }) => {
-      if (err || !TokenStore.getToken(user.username)) {
+    (err: { name: string; message: string; expiredAt: number }, decoded: { data: User }) => {
+      if (err || decoded === undefined || !TokenStore.getToken(decoded.data.username)) {
         res.status(403).send('Invalid JWT Token')
         return
       }
-      req.user = user
+      req.user = decoded.data
       next()
       return
     },

@@ -17,14 +17,19 @@ plaid_api_router.route('/access_token').post(async (req: AuthRequest, res: Respo
   res.status(201).json({ 'msg': 'Token is successfully verified and saved for further usage.' })
 })
 
-plaid_api_router.route('/transactions').post(async (req: AuthRequest, res: Response) => {
+plaid_api_router.route('/transactions/:id').get(async (req: AuthRequest, res: Response) => {
   // Maybe using GET method
-  const transactions = await PlaidService.getTransaction({ ...req.body, user_id: req.user.id })
+  const count: number = typeof req.query.count === 'string' ? parseInt(req.query.count) : 50
+  const transactions = await PlaidService.getTransaction({
+    id: parseInt(req.params.id),
+    count: count,
+    user_id: req.user.id,
+  })
   res.status(201).json(transactions)
 })
 
-plaid_api_router.route('/balance').post(async (req: AuthRequest, res: Response) => {
-  const balance = await PlaidService.getBalance({ ...req.body, user_id: req.user.id })
+plaid_api_router.route('/balance/:id').get(async (req: AuthRequest, res: Response) => {
+  const balance = await PlaidService.getBalance({ id: parseInt(req.params.id), user_id: req.user.id })
   res.status(201).json(balance)
 })
 
